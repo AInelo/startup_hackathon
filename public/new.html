@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Terrain Information</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+       body {
+	font-family: Arial, sans-serif;
+	background-image: url('https://example.com/water-background.jpg'); /* Remplacez l'URL par l'URL de votre image en ligne */
+	background-size: cover;
+	background-position: center;
+}
+
+#flood-info, #activities {
+	margin: 1em 0;
+	background-color: rgba(255, 255, 255, 0.7);
+	padding: 1em;
+	border-radius: 5px;
+}
+
+#flood-info h2, #activities h2 {
+	color: #333;
+}
+
+#risk-level {
+	color: red;
+	font-weight: bold;
+}
+
+#activity-list {
+	padding-left: 2em;
+}
+    </style>
+</head>
+<body>
+	<h1>Terrain Information</h1>
+	<div id="flood-info">
+		<h2>Flood Risk</h2>
+		<p id="risk-level"></p>
+		<p id="risk-description"></p>
+	</div>
+	<div id="activities">
+		<h2>Safe Activities</h2>
+		<ul id="activity-list"></ul>
+	</div>
+	<script>
+        // Example data
+const riskLevels = {
+	low: {
+		level: 'Low',
+		description: 'There is a low risk of flooding on this terrain.',
+		activities: ['Picnics', 'Camping', 'Hiking']
+	},
+	medium: {
+		level: 'Medium',
+		description: 'There is a medium risk of flooding on this terrain. Be prepared for wet conditions.',
+		activities: ['Picnics', 'Fishing']
+	},
+	high: {
+		level: 'High',
+		description: 'There is a high risk of flooding on this terrain. Avoid this area when there is heavy rain or snowmelt.',
+		activities: []
+	}
+}
+
+// Set flood risk information
+const riskLevel = 'medium';
+document.getElementById('risk-level').textContent = riskLevels[riskLevel].level;
+document.getElementById('risk-description').textContent = riskLevels[riskLevel].description;
+
+// Set safe activities
+const activityList = document.getElementById('activity-list');
+riskLevels[riskLevel].activities.forEach(activity => {
+	const li = document.createElement('li');
+	li.textContent = activity;
+	activityList.appendChild(li);
+});
+    </script>
+</body>
+</html>
